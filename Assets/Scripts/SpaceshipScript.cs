@@ -66,10 +66,14 @@ public class Spaceship : MonoBehaviour
         yield return new WaitForSeconds(cooldownSeconds);
         Debug.Log("YA DISPARA");
         CanShoot = true;
+
+
+        StartCoroutine(EnableShoot());
     }
 
+   
 
- 
+
 }
 
 

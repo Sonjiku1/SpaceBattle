@@ -1,6 +1,6 @@
 
 using UnityEngine;
-
+using System.Collections;
 public class Spaceship : MonoBehaviour
 {
     [SerializeField] private float speed = 5f;
@@ -8,12 +8,24 @@ public class Spaceship : MonoBehaviour
     private Rigidbody2D rb;
     private float movimientoX;
 
+    [SerializeField]
+    private float cooldownSeconds;
+    bool CanShoot = true;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
 
         // Posición inicial del jugador
         transform.position = new Vector3(0f, -7f, 0f);
+
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            Instantiate(gameObject, transform.position, Quaternion.identity);
+
+
+        }
+
     }
 
     void Update()
@@ -30,6 +42,13 @@ public class Spaceship : MonoBehaviour
         {
             movimientoX = -1f;
         }
+
+        if (Input.GetKey("space") && CanShoot)
+        {
+            Debug.Log("SIUUU");
+            CanShoot = false;
+            StartCoroutine(EnableShoot());
+        }
     }
 
     void FixedUpdate()
@@ -40,6 +59,17 @@ public class Spaceship : MonoBehaviour
             0f
         );
     }
+
+
+    IEnumerator EnableShoot()
+    {
+        yield return new WaitForSeconds(cooldownSeconds);
+        Debug.Log("YA DISPARA");
+        CanShoot = true;
+    }
+
+
+ 
 }
 
 

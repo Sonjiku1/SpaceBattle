@@ -1,24 +1,29 @@
 
+using System.Collections;
+using System.Diagnostics.CodeAnalysis;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Bala : MonoBehaviour
 {
-    [SerializeField] private float velocidad = 10f;
-
     private Rigidbody2D rb;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
 
-        gameObject.tag = "bala1";
+        //cuando presionemos la tecla espacio se instancie la bala y se mueva hacia arriba
 
-        // Movimiento hacia arriba
-        rb.linearVelocity = Vector2.up * velocidad;
+
+        //para que detecte la pulsación de la tecla espacio y se instancie la bala
+    ;
+
+
+
+
+
+
     }
 
-    void OnBecameInvisible()
-    {
-        Destroy(gameObject);
-    }
+
 }
+  
